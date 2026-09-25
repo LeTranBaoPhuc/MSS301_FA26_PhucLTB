@@ -1,5 +1,6 @@
 package com.fudn.order_service.service;
 
+import com.fudn.order_service.client.InventoryClient;
 import com.fudn.order_service.dto.OrderRequest;
 import com.fudn.order_service.model.Order;
 import com.fudn.order_service.repository.OrderRepository;
@@ -15,10 +16,20 @@ import java.util.UUID;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+    private final InventoryClient inventoryClient; // <-- thêm
 
     public void placeOrder(OrderRequest orderRequest) {
-        var order = mapToOrder(orderRequest);
-        orderRepository.save(order);
+        boolean inStock = inventoryClient.isInStock(
+                orderRequest.skuCode(),
+                orderRequest.quantity());
+
+        if (inStock) {
+            var order = mapToOrder(orderRequest);
+            orderRepository.save(order);
+        } else {
+            throw new RuntimeException(
+                    "Product with Skucode " + orderRequest.skuCode() + " is not in stock");
+        }
     }
 
     private static Order mapToOrder(OrderRequest orderRequest) {

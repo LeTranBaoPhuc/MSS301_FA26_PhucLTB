@@ -42,6 +42,35 @@ public class CustomerService {
         return CustomerResponse.from(saved);
     }
 
+    // TODO 2.5
+    public CustomerResponse getProfile(Long customerId) {
+        return CustomerResponse.from(findCustomer(customerId));
+    }
+
+    @Transactional
+    public CustomerResponse updateProfile(Long customerId, ProfileUpdateRequest request) {
+        Customer customer = findCustomer(customerId);
+        customer.setCustomerName(request.customerName());
+        customer.setTelephone(request.telephone());
+        customer.setCustomerBirthday(request.customerBirthday());
+        return CustomerResponse.from(customerRepository.save(customer));
+    }
+
+    @Transactional
+    public void changePassword(Long customerId, ChangePasswordRequest request) {
+        Customer customer = findCustomer(customerId);
+        if (!passwordEncoder.matches(request.oldPassword(), customer.getPassword())) {
+            throw ApiException.badRequest("Old password is incorrect");
+        }
+        if (request.oldPassword().equals(request.newPassword())) {
+            throw ApiException.badRequest("New password must be different from the old password");
+        }
+        customer.setPassword(passwordEncoder.encode(request.newPassword()));
+        customerRepository.save(customer);
+    }
+
+    // ===================== HELPER =====================
+
     private void ensureEmailAvailable(String email, Long excludeId) {
         boolean exists = excludeId == null
                 ? customerRepository.existsByEmailIgnoreCase(email)
@@ -49,5 +78,10 @@ public class CustomerService {
         if (exists || adminEmail.equalsIgnoreCase(email)) {
             throw ApiException.conflict("Email is already in use: " + email);
         }
+    }
+
+    private Customer findCustomer(Long id) {
+        return customerRepository.findById(id)
+                .orElseThrow(() -> ApiException.notFound("Customer not found with id: " + id));
     }
 }

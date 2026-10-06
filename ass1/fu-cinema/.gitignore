@@ -1,3 +1,14 @@
 # Docker volumes (Database data)
 docker/mongodb/data/
 docker/mysql/data/
+
+# Java / Spring Boot ignores
+**/target/
+**/*.class
+**/*.jar
+**/*.war
+
+# IntelliJ IDEA / VSCode
+.idea/
+**/*.iml
+.vscode/

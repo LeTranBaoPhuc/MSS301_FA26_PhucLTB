@@ -30,6 +30,19 @@ public class ShowtimeService {
     private final MovieService movieService;
     private final RoomService roomService;
 
+<<<<<<< HEAD
+=======
+    // TODO 6.4: loc theo movieId va/hoac ngay chieu
+    public List<ShowtimeResponse> search(String movieId, LocalDate date) {
+        List<Showtime> showtimes = (movieId == null || movieId.isBlank())
+                ? showtimeRepository.findAllByOrderByStartTimeAsc()
+                : showtimeRepository.findByMovieIdOrderByStartTimeAsc(movieId);
+        List<Showtime> filtered = showtimes.stream()
+                .filter(s -> date == null || s.getStartTime().toLocalDate().equals(date))
+                .toList();
+        return toResponses(filtered);
+    }
+>>>>>>> e6d5a238bfd8604ebfd509cd2a4801172ea3afe7
 
     public ShowtimeResponse getById(String id) {
         Showtime s = find(id);
@@ -51,6 +64,15 @@ public class ShowtimeService {
         return apply(showtime, request, id);
     }
 
+<<<<<<< HEAD
+=======
+    // TODO 6.4 – BR06: soft delete
+    public void cancel(String id) {
+        Showtime showtime = find(id);
+        showtime.setShowtimeStatus(ShowtimeStatus.CANCELLED);
+        showtimeRepository.save(showtime);
+    }
+>>>>>>> e6d5a238bfd8604ebfd509cd2a4801172ea3afe7
 
     private Showtime find(String id) {
         return showtimeRepository.findById(id)

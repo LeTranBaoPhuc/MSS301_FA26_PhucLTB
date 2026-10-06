@@ -1,11 +1,14 @@
 package com.fudn.movie_service.service;
 
+import com.fudn.movie_service.dto.MovieRequest;
 import com.fudn.movie_service.dto.MovieResponse;
+import com.fudn.movie_service.exception.ApiException;
 import com.fudn.movie_service.model.Genre;
 import com.fudn.movie_service.model.Movie;
 import com.fudn.movie_service.model.MovieStatus;
 import com.fudn.movie_service.repository.GenreRepository;
 import com.fudn.movie_service.repository.MovieRepository;
+import com.fudn.movie_service.repository.ShowtimeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -24,6 +27,8 @@ public class MovieService {
 
     private final MovieRepository movieRepository;
     private final GenreRepository genreRepository;
+    private final ShowtimeRepository showtimeRepository;
+    private final GenreService genreService;
     private final MongoTemplate mongoTemplate;
 
     // TODO 5.2: tim kiem dong bang Criteria - tham so nao null thi bo qua
@@ -50,5 +55,49 @@ public class MovieService {
         return movies.stream()
                 .map(m -> MovieResponse.from(m, genreNames.get(m.getGenreId())))
                 .toList();
+    }
+
+    public MovieResponse getById(String id) {
+        Movie movie = find(id);
+        return MovieResponse.from(movie, genreService.find(movie.getGenreId()).getGenreName());
+    }
+
+    public MovieResponse create(MovieRequest request) {
+        Movie movie = new Movie();
+        Genre genre = apply(movie, request);
+        return MovieResponse.from(movieRepository.save(movie), genre.getGenreName());
+    }
+
+    public MovieResponse update(String id, MovieRequest request) {
+        Movie movie = find(id);
+        Genre genre = apply(movie, request);
+        return MovieResponse.from(movieRepository.save(movie), genre.getGenreName());
+    }
+
+    public void delete(String id) {
+        Movie movie = find(id);
+        if (showtimeRepository.existsByMovieId(id)) {            // BR03
+            throw ApiException.conflict("Cannot delete movie that already has showtimes. Set status to ENDED instead.");
+        }
+        movieRepository.delete(movie);
+    }
+
+    Movie find(String id) {
+        return movieRepository.findById(id)
+                .orElseThrow(() -> ApiException.notFound("Movie not found with id: " + id));
+    }
+
+    private Genre apply(Movie movie, MovieRequest request) {
+        Genre genre = genreService.find(request.genreId());     // BR15: 404 neu genre khong ton tai
+        movie.setTitle(request.title());
+        movie.setDescription(request.description());
+        movie.setDirector(request.director());
+        movie.setDurationMinutes(request.durationMinutes());
+        movie.setLanguage(request.language());
+        movie.setAgeRating(request.ageRating());
+        movie.setReleaseDate(request.releaseDate());
+        movie.setGenreId(genre.getGenreId());
+        movie.setMovieStatus(request.movieStatus());
+        return genre;
     }
 }

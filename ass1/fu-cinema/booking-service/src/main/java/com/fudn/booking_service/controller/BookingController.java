@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/bookings")
 @RequiredArgsConstructor
@@ -33,5 +35,35 @@ public class BookingController {
     public BookingResponse create(@RequestHeader(USER_ID) Long userId,
                                   @Valid @RequestBody CreateBookingRequest request) {
         return bookingService.create(userId, request);
+    }
+
+    // ======================= F8 =======================
+
+    // CUSTOMER
+    @GetMapping("/my")
+    public List<BookingResponse> getMyBookings(@RequestHeader(USER_ID) Long userId) {
+        return bookingService.getMyBookings(userId);
+    }
+
+    // ADMIN
+    @GetMapping
+    public List<BookingResponse> getAll() {
+        return bookingService.getAll();
+    }
+
+    // TODO 8.4
+    @GetMapping("/{bookingId}")
+    public BookingResponse getById(@PathVariable Long bookingId,
+                                   @RequestHeader(USER_ID) Long userId,
+                                   @RequestHeader(USER_ROLE) String role) {
+        return bookingService.getById(bookingId, userId, role);
+    }
+
+    // TODO 8.4
+    @PostMapping("/{bookingId}/cancel")
+    public BookingResponse cancel(@PathVariable Long bookingId,
+                                  @RequestHeader(USER_ID) Long userId,
+                                  @RequestHeader(USER_ROLE) String role) {
+        return bookingService.cancel(bookingId, userId, role);
     }
 }

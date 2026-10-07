@@ -1,0 +1,14 @@
+package com.fudn.booking_service.client;
+
+import com.fudn.booking_service.dto.ShowtimeResponse;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+// TODO 7.4: Goi API movie-service
+@FeignClient(value = "movie-service", url = "${movie.service.url}")
+public interface MovieClient {
+
+    @GetMapping("/api/showtimes/{id}")
+    ShowtimeResponse getShowtime(@PathVariable("id") String id);
+}

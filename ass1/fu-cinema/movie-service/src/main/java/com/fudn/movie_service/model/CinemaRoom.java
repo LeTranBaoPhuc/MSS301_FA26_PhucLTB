@@ -25,4 +25,9 @@ public class CinemaRoom {
     private Integer seatRows;
     private Integer seatsPerRow;
     private RoomStatus roomStatus;
+
+    /** Gia tri tinh toan - Spring Data map theo field nen KHONG luu vao document */
+    public int getTotalSeats() {
+        return seatRows * seatsPerRow;
+    }
 }

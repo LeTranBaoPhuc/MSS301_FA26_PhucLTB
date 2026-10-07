@@ -2,36 +2,45 @@ package com.fudn.booking_service.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "bookings")
+@Table(name = "booking")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
 
-    private Long customerId;
-    
-    // String id do MongoDB tao ra ben movie-service
-    private String showtimeId;
-    
-    private LocalDateTime bookingTime;
+    @Column(nullable = false)
+    private LocalDateTime bookingDate;
+
+    @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal totalPrice;
 
-    // TODO 7.3: Quan he 1-N mappedBy "booking" trong class Ticket, xoa booking se xoa cac ticket
+    @Column(nullable = false)
+    private Long customerId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private BookingStatus bookingStatus;
+
+    /** 1 Booking - N BookingDetail; luu Booking se luu luon cac detail (cascade) */
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ticket> tickets = new ArrayList<>();
-    
-    public void addTicket(Ticket ticket) {
-        tickets.add(ticket);
-        ticket.setBooking(this);
+    @OrderBy("bookingDetailId ASC")
+    private List<BookingDetail> details = new ArrayList<>();
+
+    public void addDetail(BookingDetail detail) {
+        details.add(detail);
+        detail.setBooking(this);
     }
 }

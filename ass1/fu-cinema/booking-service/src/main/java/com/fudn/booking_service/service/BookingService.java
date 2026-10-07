@@ -101,6 +101,18 @@ public class BookingService {
                 st.seatRows(), st.seatsPerRow(), totalSeats, totalSeats - booked.size(), booked);
     }
 
+    // ======================= F8: HISTORY & CANCEL =======================
+
+    // TODO 8.1
+    public List<BookingResponse> getMyBookings(Long customerId) {
+        return bookingRepository.findByCustomerIdOrderByBookingDateDesc(customerId)
+                .stream().map(BookingResponse::from).toList();
+    }
+
+    public List<BookingResponse> getAll() {
+        return bookingRepository.findAllByOrderByBookingDateDesc()
+                .stream().map(BookingResponse::from).toList();
+    }
 
     // ======================= HELPER =======================
 

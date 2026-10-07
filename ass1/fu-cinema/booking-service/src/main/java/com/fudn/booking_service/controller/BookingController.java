@@ -2,6 +2,7 @@ package com.fudn.booking_service.controller;
 
 import com.fudn.booking_service.dto.BookingResponse;
 import com.fudn.booking_service.dto.CreateBookingRequest;
+import com.fudn.booking_service.dto.ReportResponse;
 import com.fudn.booking_service.dto.SeatMapResponse;
 import com.fudn.booking_service.service.BookingService;
 import jakarta.validation.Valid;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -65,5 +67,14 @@ public class BookingController {
                                   @RequestHeader(USER_ID) Long userId,
                                   @RequestHeader(USER_ROLE) String role) {
         return bookingService.cancel(bookingId, userId, role);
+    }
+
+    // ======================= F9 =======================
+
+    // TODO 9.3
+    @GetMapping("/report")
+    public ReportResponse report(@RequestParam LocalDate startDate,
+                                 @RequestParam LocalDate endDate) {
+        return bookingService.report(startDate, endDate);
     }
 }

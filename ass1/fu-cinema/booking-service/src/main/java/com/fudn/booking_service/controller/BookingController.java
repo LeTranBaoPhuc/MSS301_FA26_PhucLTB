@@ -62,7 +62,7 @@ public class BookingController {
     }
 
     // TODO 8.4
-    @PostMapping("/{bookingId}/cancel")
+    @PutMapping("/{bookingId}/cancel")
     public BookingResponse cancel(@PathVariable Long bookingId,
                                   @RequestHeader(USER_ID) Long userId,
                                   @RequestHeader(USER_ROLE) String role) {

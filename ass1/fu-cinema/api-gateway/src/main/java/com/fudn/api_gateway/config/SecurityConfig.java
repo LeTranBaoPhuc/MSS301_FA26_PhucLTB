@@ -1,4 +1,4 @@
-package com.fudn.gateway.config;
+package com.fudn.api_gateway.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

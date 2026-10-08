@@ -24,18 +24,18 @@ public class CustomerController {
         return customerService.register(request);
     }
 
-    @GetMapping("/profile")
+    @GetMapping("/me")
     public CustomerResponse getProfile(@RequestHeader("X-User-Id") Long userId) {
         return customerService.getProfile(userId);
     }
 
-    @PutMapping("/profile")
+    @PutMapping("/me")
     public CustomerResponse updateProfile(@RequestHeader("X-User-Id") Long userId,
                                           @Valid @RequestBody ProfileUpdateRequest request) {
         return customerService.updateProfile(userId, request);
     }
 
-    @PutMapping("/password")
+    @PutMapping("/me/password")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void changePassword(@RequestHeader("X-User-Id") Long userId,
                                @Valid @RequestBody ChangePasswordRequest request) {

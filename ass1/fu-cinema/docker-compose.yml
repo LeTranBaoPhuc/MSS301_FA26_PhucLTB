@@ -10,9 +10,9 @@ services:
       MSSQL_SA_PASSWORD: "Fucinema@2026"
       MSSQL_PID: "Developer"
     volumes:
-      - sqlserver-data:/var/opt/mssql          # named volume (bind mount tren Windows hay loi quyen)
+      - sqlserver-data:/var/opt/mssql # named volume (bind mount tren Windows hay loi quyen)
     healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q \"SELECT 1\" || exit 1"]
+      test: [ "CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q \"SELECT 1\" || exit 1" ]
       interval: 10s
       timeout: 5s
       retries: 12
@@ -27,7 +27,7 @@ services:
         condition: service_healthy
     volumes:
       - ./sqlserver/init.sql:/init.sql:ro
-    entrypoint: ["/opt/mssql-tools18/bin/sqlcmd", "-S", "sqlserver", "-U", "sa", "-P", "Fucinema@2026", "-C", "-i", "/init.sql"]
+    entrypoint: [ "/opt/mssql-tools18/bin/sqlcmd", "-S", "sqlserver", "-U", "sa", "-P", "Fucinema@2026", "-C", "-i", "/init.sql" ]
     restart: "no"
 
   # ---------- MongoDB: movie-service ----------

@@ -1,4 +1,4 @@
-package com.fudn.gateway.filter;
+package com.fudn.api_gateway.filter;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -36,15 +36,20 @@ public class SecurityConfig {
                         .requestMatchers("/actuator/health").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/login", "/api/customers/register").permitAll()
                         .requestMatchers(HttpMethod.GET,
-                                "/api/genres/**", "/api/movies/**", "/api/showtimes/**",
-                                "/api/bookings/showtimes/**").permitAll()
+                                "/api/genres", "/api/genres/**", 
+                                "/api/movies", "/api/movies/**", 
+                                "/api/showtimes", "/api/showtimes/**",
+                                "/api/bookings/showtimes", "/api/bookings/showtimes/**").permitAll()
 
                         // ---------- customer-service ----------
                         .requestMatchers("/api/customers/me", "/api/customers/me/**").hasRole("CUSTOMER")
-                        .requestMatchers("/api/customers/**").hasRole("ADMIN")
+                        .requestMatchers("/api/customers", "/api/customers/**").hasRole("ADMIN")
 
                         // ---------- movie-service (ghi) ----------
-                        .requestMatchers("/api/rooms/**", "/api/genres/**", "/api/movies/**", "/api/showtimes/**")
+                        .requestMatchers("/api/rooms", "/api/rooms/**", 
+                                "/api/genres", "/api/genres/**", 
+                                "/api/movies", "/api/movies/**", 
+                                "/api/showtimes", "/api/showtimes/**")
                                 .hasRole("ADMIN")
 
                         // ---------- booking-service ----------

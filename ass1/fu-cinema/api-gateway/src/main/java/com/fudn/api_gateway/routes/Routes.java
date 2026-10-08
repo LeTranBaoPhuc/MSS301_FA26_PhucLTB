@@ -28,7 +28,8 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> customerServiceRoute() {
         return route("customer_service")
-                .route(path("/api/auth/**").or(path("/api/customers/**")), http())
+                .route(path("/api/auth").or(path("/api/auth/**"))
+                        .or(path("/api/customers").or(path("/api/customers/**"))), http())
                 .before(uri(customerServiceUrl))
                 .before(forwardUserInfo())
                 .build();
@@ -37,10 +38,10 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> movieServiceRoute() {
         return route("movie_service")
-                .route(path("/api/genres/**")
-                        .or(path("/api/rooms/**"))
-                        .or(path("/api/movies/**"))
-                        .or(path("/api/showtimes/**")), http())
+                .route(path("/api/genres").or(path("/api/genres/**"))
+                        .or(path("/api/rooms").or(path("/api/rooms/**")))
+                        .or(path("/api/movies").or(path("/api/movies/**")))
+                        .or(path("/api/showtimes").or(path("/api/showtimes/**"))), http())
                 .before(uri(movieServiceUrl))
                 .before(forwardUserInfo())
                 .build();
@@ -49,7 +50,7 @@ public class Routes {
     @Bean
     public RouterFunction<ServerResponse> bookingServiceRoute() {
         return route("booking_service")
-                .route(RequestPredicates.path("/api/bookings/**"), http())
+                .route(RequestPredicates.path("/api/bookings").or(RequestPredicates.path("/api/bookings/**")), http())
                 .before(uri(bookingServiceUrl))
                 .before(forwardUserInfo())
                 .build();

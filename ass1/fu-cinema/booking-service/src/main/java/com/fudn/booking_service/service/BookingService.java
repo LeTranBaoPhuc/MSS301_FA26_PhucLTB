@@ -16,7 +16,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+<<<<<<< Updated upstream
 import java.time.*;
+=======
+import java.time.LocalDateTime;
+>>>>>>> Stashed changes
 import java.util.*;
 
 @Slf4j
@@ -32,6 +36,11 @@ public class BookingService {
     private final BookingDetailRepository bookingDetailRepository;
     private final MovieClient movieClient;
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     // ======================= F7: CREATE BOOKING =======================
 
     // TODO 7.5
@@ -88,6 +97,7 @@ public class BookingService {
         return BookingResponse.from(saved);
     }
 
+<<<<<<< Updated upstream
     // ======================= F7: SEAT MAP =======================
 
     // TODO 7.6
@@ -174,6 +184,8 @@ public class BookingService {
                 revenueByMovie, bookings.stream().map(BookingResponse::from).toList()); // da desc tu query
     }
 
+=======
+>>>>>>> Stashed changes
     // ======================= HELPER =======================
 
     private ShowtimeResponse fetchShowtime(String showtimeId) {

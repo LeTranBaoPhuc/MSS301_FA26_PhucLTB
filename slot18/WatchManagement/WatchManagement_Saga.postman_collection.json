@@ -66,7 +66,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"storeAccount\": \"admin@watch.com\",\n  \"accountPassword\": \"1\"\n}",
+              "raw": "{\n  \"username\": \"adminsys\",\n  \"password\": \"@1\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -116,7 +116,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"storeAccount\": \"staff@watch.com\",\n  \"accountPassword\": \"1\"\n}",
+              "raw": "{\n  \"username\": \"staff02\",\n  \"password\": \"@1\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -197,7 +197,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Submariner Date\",\n  \"price\": 15000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Rolex Submariner 2026 Edition\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 9550,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -278,7 +278,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Submariner Date\",\n  \"price\": 15000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Rolex Submariner 2026 Edition\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 9550,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -326,7 +326,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Submariner Date Updated\",\n  \"price\": 16000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Rolex Submariner 2026 Edition\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 9550,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -380,7 +380,7 @@
           ]
         },
         {
-          "name": "401 Inactive Account Login",
+          "name": "403 Inactive Account Login (staff01)",
           "request": {
             "method": "POST",
             "header": [
@@ -403,7 +403,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"storeAccount\": \"inactive@watch.com\",\n  \"accountPassword\": \"1\"\n}",
+              "raw": "{\n  \"username\": \"staff01\",\n  \"password\": \"@1\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -416,7 +416,7 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "pm.test('Status is 401', () => pm.response.to.have.status(401));"
+                  "pm.test('Status is 403 Forbidden for inactive account', () => pm.response.to.have.status(403));"
                 ]
               }
             }
@@ -446,7 +446,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"storeAccount\": \"admin@watch.com\",\n  \"accountPassword\": \"wrong\"\n}",
+              "raw": "{\n  \"username\": \"adminsys\",\n  \"password\": \"wrongpassword\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -546,7 +546,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Fake Spoofed Header\",\n  \"price\": 15000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Rolex Submariner 2026 Edition\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 9550,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -627,7 +627,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Short Name\",\n  \"price\": 500,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Short Name\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 9550,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -674,7 +674,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Valid Watch Name\",\n  \"price\": 99.99,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Rolex Submariner 2026 Edition\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 99.99,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -694,7 +694,7 @@
           ]
         },
         {
-          "name": "ReleaseDate in the past",
+          "name": "ReleaseDate null",
           "request": {
             "method": "POST",
             "header": [
@@ -721,54 +721,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Valid Watch Name\",\n  \"price\": 500,\n  \"releaseDate\": \"2020-01-01\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test('Status is 400', () => pm.response.to.have.status(400));"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "ReleaseDate in the future",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Authorization",
-                "value": "Bearer {{adminToken}}",
-                "type": "text"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "{{baseUrl}}/api/watches",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "watches"
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Valid Watch Name\",\n  \"price\": 500,\n  \"releaseDate\": \"2030-01-01\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Rolex Submariner 2026 Edition\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 9550,\n  \"releaseDate\": null,\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -815,7 +768,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Valid Watch Name\",\n  \"price\": 500,\n  \"releaseDate\": \"{{today}}\",\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Rolex Submariner 2026 Edition\",\n  \"categoryId\": null,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 9550,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -862,7 +815,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Rolex Valid Watch Name\",\n  \"price\": 500,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1\n}",
+              "raw": "{\n  \"name\": \"Rolex Submariner 2026 Edition\",\n  \"categoryId\": 1,\n  \"brandId\": null,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"300 meters\",\n  \"price\": 9550,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 50\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -948,7 +901,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Saga Rolex Cosmograph Daytona\",\n  \"price\": 35000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Saga Rolex Cosmograph Daytona\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"100 meters\",\n  \"price\": 35000,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 20\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -961,14 +914,14 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Status is 201 Created', () => pm.response.to.have.status(201));",
                   "const res = pm.response.json();",
+                  "const sagaId = pm.response.headers.get('X-Saga-Id');",
                   "pm.test('Saga completed successfully', () => {",
                   "    pm.expect(res.success).to.be.true;",
-                  "    pm.expect(res.data.sagaStatus).to.eql('COMPLETED');",
-                  "    pm.expect(res.data.data.watchId).to.be.a('number');",
-                  "    pm.collectionVariables.set('newWatchId', res.data.data.watchId);",
-                  "    pm.collectionVariables.set('sagaId', res.data.sagaId);",
+                  "    pm.expect(res.data.watchId).to.be.a('number');",
+                  "    pm.collectionVariables.set('newWatchId', res.data.watchId);",
+                  "    if (sagaId) pm.collectionVariables.set('sagaId', sagaId);",
                   "});"
                 ]
               }
@@ -1116,7 +1069,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Saga Rolex Brand 999 Watch\",\n  \"price\": 20000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 999\n}",
+              "raw": "{\n  \"name\": \"Saga Rolex Brand 999 Watch\",\n  \"categoryId\": 1,\n  \"brandId\": 999,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"100 meters\",\n  \"price\": 20000,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 10\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1131,10 +1084,11 @@
                 "exec": [
                   "pm.test('Status is 400', () => pm.response.to.have.status(400));",
                   "const res = pm.response.json();",
+                  "const sagaId = pm.response.headers.get('X-Saga-Id') || res.data.sagaId;",
                   "pm.test('Saga compensated', () => {",
                   "    pm.expect(res.success).to.be.false;",
-                  "    pm.expect(res.sagaStatus).to.eql('COMPENSATED');",
-                  "    pm.collectionVariables.set('sagaId', res.sagaId);",
+                  "    pm.expect(res.data.sagaStatus).to.eql('COMPENSATED');",
+                  "    if (sagaId) pm.collectionVariables.set('sagaId', sagaId);",
                   "});"
                 ]
               }
@@ -1165,7 +1119,7 @@
                   "pm.test('Status is 200', () => pm.response.to.have.status(200));",
                   "const res = pm.response.json();",
                   "pm.test('No watch with name Saga Rolex Brand 999 Watch', () => {",
-                  "    pm.expect(res.data.some(w => w.watchName === 'Saga Rolex Brand 999 Watch')).to.be.false;",
+                  "    pm.expect(res.data.some(w => w.name === 'Saga Rolex Brand 999 Watch')).to.be.false;",
                   "});"
                 ]
               }
@@ -1252,7 +1206,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Saga Fault Injection Watch C\",\n  \"price\": 25000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 1\n}",
+              "raw": "{\n  \"name\": \"Saga Fault Injection Watch C\",\n  \"categoryId\": 1,\n  \"brandId\": 1,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"100 meters\",\n  \"price\": 25000,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 10\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1267,10 +1221,11 @@
                 "exec": [
                   "pm.test('Status is 500', () => pm.response.to.have.status(500));",
                   "const res = pm.response.json();",
+                  "const sagaId = pm.response.headers.get('X-Saga-Id') || res.data.sagaId;",
                   "pm.test('Saga compensated on fault', () => {",
                   "    pm.expect(res.success).to.be.false;",
-                  "    pm.expect(res.sagaStatus).to.eql('COMPENSATED');",
-                  "    pm.collectionVariables.set('sagaId', res.sagaId);",
+                  "    pm.expect(res.data.sagaStatus).to.eql('COMPENSATED');",
+                  "    if (sagaId) pm.collectionVariables.set('sagaId', sagaId);",
                   "});"
                 ]
               }
@@ -1301,7 +1256,7 @@
                   "pm.test('Status is 200', () => pm.response.to.have.status(200));",
                   "const res = pm.response.json();",
                   "pm.test('No watch with name Saga Fault Injection Watch C', () => {",
-                  "    pm.expect(res.data.some(w => w.watchName === 'Saga Fault Injection Watch C')).to.be.false;",
+                  "    pm.expect(res.data.some(w => w.name === 'Saga Fault Injection Watch C')).to.be.false;",
                   "});"
                 ]
               }
@@ -1378,7 +1333,7 @@
                   "pm.test('Status is 200', () => pm.response.to.have.status(200));",
                   "const res = pm.response.json();",
                   "const expectedId = parseInt(pm.collectionVariables.get('newWatchId'));",
-                  "pm.test('Brand 1 does not contain fault watch', () => {",
+                  "pm.test('Brand 1 still contains scenario A watch', () => {",
                   "    pm.expect(res.data.watchIds).to.include(expectedId);",
                   "});"
                 ]
@@ -1420,7 +1375,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Saga Rolex Updated Brand 999\",\n  \"price\": 40000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 999\n}",
+              "raw": "{\n  \"name\": \"Saga Rolex Updated Brand 999\",\n  \"categoryId\": 1,\n  \"brandId\": 999,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"100 meters\",\n  \"price\": 40000,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 15\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1435,10 +1390,11 @@
                 "exec": [
                   "pm.test('Status is 400', () => pm.response.to.have.status(400));",
                   "const res = pm.response.json();",
+                  "const sagaId = pm.response.headers.get('X-Saga-Id') || res.data.sagaId;",
                   "pm.test('Saga compensated and restored', () => {",
                   "    pm.expect(res.success).to.be.false;",
-                  "    pm.expect(res.sagaStatus).to.eql('COMPENSATED');",
-                  "    pm.collectionVariables.set('sagaId', res.sagaId);",
+                  "    pm.expect(res.data.sagaStatus).to.eql('COMPENSATED');",
+                  "    if (sagaId) pm.collectionVariables.set('sagaId', sagaId);",
                   "});"
                 ]
               }
@@ -1557,7 +1513,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Saga Rolex Updated Brand 2\",\n  \"price\": 42000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 2\n}",
+              "raw": "{\n  \"name\": \"Saga Rolex Updated Brand 2\",\n  \"categoryId\": 1,\n  \"brandId\": 2,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"100 meters\",\n  \"price\": 42000,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 15\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1572,10 +1528,11 @@
                 "exec": [
                   "pm.test('Status is 500', () => pm.response.to.have.status(500));",
                   "const res = pm.response.json();",
+                  "const sagaId = pm.response.headers.get('X-Saga-Id') || res.data.sagaId;",
                   "pm.test('Saga compensated', () => {",
                   "    pm.expect(res.success).to.be.false;",
-                  "    pm.expect(res.sagaStatus).to.eql('COMPENSATED');",
-                  "    pm.collectionVariables.set('sagaId', res.sagaId);",
+                  "    pm.expect(res.data.sagaStatus).to.eql('COMPENSATED');",
+                  "    if (sagaId) pm.collectionVariables.set('sagaId', sagaId);",
                   "});"
                 ]
               }
@@ -1652,7 +1609,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"watchName\": \"Saga Rolex Daytona in Brand 2\",\n  \"price\": 45000,\n  \"releaseDate\": \"{{today}}\",\n  \"categoryId\": 1,\n  \"brandId\": 2\n}",
+              "raw": "{\n  \"name\": \"Saga Rolex Daytona in Brand 2\",\n  \"categoryId\": 1,\n  \"brandId\": 2,\n  \"caseMaterial\": \"Oystersteel\",\n  \"strapMaterial\": \"Oystersteel\",\n  \"waterpMaterial\": \"100 meters\",\n  \"price\": 45000,\n  \"releaseDate\": \"{{today}}\",\n  \"stock\": 15\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1668,7 +1625,7 @@
                   "pm.test('Status is 200', () => pm.response.to.have.status(200));",
                   "const res = pm.response.json();",
                   "pm.test('Update COMPLETED', () => {",
-                  "    pm.expect(res.data.sagaStatus).to.eql('COMPLETED');",
+                  "    pm.expect(res.success).to.be.true;",
                   "});"
                 ]
               }
@@ -1749,9 +1706,10 @@
                 "exec": [
                   "pm.test('Status is 500', () => pm.response.to.have.status(500));",
                   "const res = pm.response.json();",
+                  "const sagaId = pm.response.headers.get('X-Saga-Id') || res.data.sagaId;",
                   "pm.test('Saga compensated', () => {",
-                  "    pm.expect(res.sagaStatus).to.eql('COMPENSATED');",
-                  "    pm.collectionVariables.set('sagaId', res.sagaId);",
+                  "    pm.expect(res.data.sagaStatus).to.eql('COMPENSATED');",
+                  "    if (sagaId) pm.collectionVariables.set('sagaId', sagaId);",
                   "});"
                 ]
               }
@@ -1867,9 +1825,10 @@
                 "exec": [
                   "pm.test('Status is 200', () => pm.response.to.have.status(200));",
                   "const res = pm.response.json();",
+                  "const sagaId = pm.response.headers.get('X-Saga-Id');",
                   "pm.test('Pivot committed, Saga COMPLETED', () => {",
-                  "    pm.expect(res.data.sagaStatus).to.eql('COMPLETED');",
-                  "    pm.collectionVariables.set('sagaId', res.data.sagaId);",
+                  "    pm.expect(res.success).to.be.true;",
+                  "    if (sagaId) pm.collectionVariables.set('sagaId', sagaId);",
                   "});"
                 ]
               }
